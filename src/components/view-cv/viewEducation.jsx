@@ -1,8 +1,8 @@
 export default function ViewEducation(props) {
-  console.log(props.educationInfo);
-  props.educationInfo.forEach(prop => console.log(prop));
+  console.log(props.educationInfoArr);
+  props.educationInfoArr.forEach(prop => console.log(prop));
 
-  if (props.educationInfo.length > 0) {
+  if (props.educationInfoArr.length > 0) {
     return (
       <>
         <div className="my-10 px-14">
@@ -11,7 +11,7 @@ export default function ViewEducation(props) {
           </h2>
         </div>
 
-        {props.educationInfo.map(eachEdu => {
+        {props.educationInfoArr.map(eachEdu => {
           return (
             <div className="flex mb-4 px-14 gap-5" key={eachEdu.id}>
               <div className="w-36">
@@ -30,11 +30,5 @@ export default function ViewEducation(props) {
       </>
     );
   }
-  //   return (
-  //     <>
-  // {props.educationInfo.map(school => {
-  //   return <p key={props.id}>{school.school}</p>;
-  // })}
-  //     </>
-  //   );
+
 }

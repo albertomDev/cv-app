@@ -12,8 +12,10 @@ export default function EditAll(props) {
         educationInfoState={props.educationInfoState}
         onSubmitEducationInfo={props.onSubmitEducationInfo}
         onChangeEducationInfo={props.onChangeEducationInfo}
+        showSubmittedEdu={props.showSubmittedEdu}
+        educationInfoArr={props.educationInfoArr}
+        addEdu={props.addEdu}
       />
-      <h1>hello</h1>
     </div>
   );
 }

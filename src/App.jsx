@@ -4,12 +4,12 @@ import EditAll from './components/edit-cv/editAll';
 import { useState } from 'react';
 
 function App() {
-  function uid () {
+  function uid() {
     return (
       Date.now().toString(36) +
       Math.random().toString(36).substring(2, 12).padStart(12, 0)
     );
-  };
+  }
 
   const [contactInfo, setContactInfo] = useState({
     name: '',
@@ -29,6 +29,8 @@ function App() {
 
   const [educationInfoArr, setEducationInfoArr] = useState([]);
 
+  const [showSubmittedEdu, setShowSubmittedEdu] = useState(true);
+
   function handleContactInfoChange(event) {
     const { name, value } = event.target;
     setContactInfo(prevInfo => {
@@ -41,6 +43,10 @@ function App() {
     setEducationInfo(prevInfo => {
       return { ...prevInfo, [name]: value };
     });
+  }
+
+  function toggleState() {
+    setShowSubmittedEdu(!showSubmittedEdu);
   }
 
   function handleEducationInfoForm(event) {
@@ -59,6 +65,8 @@ function App() {
         location: '',
       };
     });
+
+    toggleState();
   }
 
   return (
@@ -66,12 +74,14 @@ function App() {
       <EditAll
         contactInfo={contactInfo}
         onChangeContactInfo={handleContactInfoChange}
-        educationInfo={educationInfoArr}
+        educationInfoArr={educationInfoArr}
         educationInfoState={educationInfo}
         onChangeEducationInfo={handleEducationInfoChange}
         onSubmitEducationInfo={handleEducationInfoForm}
+        showSubmittedEdu={showSubmittedEdu}
+        addEdu={toggleState}
       />
-      <ViewAll contactInfo={contactInfo} educationInfo={educationInfoArr} />
+      <ViewAll contactInfo={contactInfo} educationInfoArr={educationInfoArr} />
     </div>
   );
 }
