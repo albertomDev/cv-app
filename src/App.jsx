@@ -31,6 +31,22 @@ function App() {
 
   const [showSubmittedEdu, setShowSubmittedEdu] = useState(true);
 
+  const [editEducation, setEditEducation] = useState(true);
+
+  function resetEducationInfoState() {
+    setEducationInfo(prevInfo => {
+      return {
+        ...prevInfo,
+        id: uid(),
+        school: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+        location: '',
+      };
+    });
+  }
+
   function handleContactInfoChange(event) {
     const { name, value } = event.target;
     setContactInfo(prevInfo => {
@@ -45,28 +61,40 @@ function App() {
     });
   }
 
-  function toggleState() {
+  function addEduButton() {
     setShowSubmittedEdu(!showSubmittedEdu);
+    resetEducationInfoState();
   }
 
   function handleEducationInfoForm(event) {
     event.preventDefault();
 
     setEducationInfoArr(prevInfo => [...prevInfo, educationInfo]);
+    addEduButton();
+  }
 
-    setEducationInfo(prevInfo => {
-      return {
-        ...prevInfo,
-        id: uid(),
-        school: '',
-        degree: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-      };
+  function handleEducationEditButton(event) {
+    const newEdit = educationInfoArr.filter(
+      eachEdu => eachEdu.id === event.currentTarget.dataset.id,
+    );
+    setEducationInfo(newEdit[0]);
+    setEditEducation(!educationInfo);
+  }
+
+  function handleEducationEditForm(event) {
+    event.preventDefault();
+    console.log(educationInfo);
+
+    const editedArray = educationInfoArr.map(each => {
+      if (each.id == educationInfo.id) {
+        return { ...each, ...educationInfo };
+      }
+      return each;
     });
-
-    toggleState();
+    console.log(editedArray);
+    setEducationInfoArr(editedArray);
+    setEditEducation(!editEducation);
+    resetEducationInfoState();
   }
 
   return (
@@ -79,7 +107,10 @@ function App() {
         onChangeEducationInfo={handleEducationInfoChange}
         onSubmitEducationInfo={handleEducationInfoForm}
         showSubmittedEdu={showSubmittedEdu}
-        addEdu={toggleState}
+        addEdu={addEduButton}
+        onClickEditEducation={handleEducationEditButton}
+        editEducation={editEducation}
+        onSubmitEditedForm={handleEducationEditForm}
       />
       <ViewAll contactInfo={contactInfo} educationInfoArr={educationInfoArr} />
     </div>

@@ -1,8 +1,9 @@
-export default function EduForm(props) {
+export default function EditEduForm(props) {
+  const { school, degree, startDate, endDate, location } = props.clickedEdu;
   return (
     <form
+      onSubmit={props.onSubmitEditedForm}
       className="rounded-b-lg bg-white px-6 py-4"
-      onSubmit={props.allInfo.onSubmitEducationInfo}
     >
       <div className="mb-4">
         <label
@@ -15,10 +16,10 @@ export default function EduForm(props) {
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
           id="school"
           name="school"
-          onChange={props.allInfo.onChangeEducationInfo}
+          onChange={props.onChangeEducationInfo}
           type="text"
           placeholder="Enter school / university"
-          value={props.allInfo.school}
+          value={school}
           required
         />
       </div>
@@ -34,8 +35,8 @@ export default function EduForm(props) {
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
           id="degree"
           name="degree"
-          value={props.allInfo.degree}
-          onChange={props.allInfo.onChangeEducationInfo}
+          value={degree}
+          onChange={props.onChangeEducationInfo}
           type="text"
           placeholder="Enter degree / field of study"
           required
@@ -54,8 +55,8 @@ export default function EduForm(props) {
             className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
             id="startDate"
             name="startDate"
-            value={props.allInfo.startDate}
-            onChange={props.allInfo.onChangeEducationInfo}
+            value={startDate}
+            onChange={props.onChangeEducationInfo}
             type="text"
             placeholder="Enter start date"
           />
@@ -72,10 +73,10 @@ export default function EduForm(props) {
             className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
             id="endDate"
             name="endDate"
-            onChange={props.allInfo.onChangeEducationInfo}
+            onChange={props.onChangeEducationInfo}
             type="text"
             placeholder="Enter end date"
-            value={props.allInfo.endDate}
+            value={endDate}
           />
         </div>
       </div>
@@ -91,17 +92,22 @@ export default function EduForm(props) {
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
           id="location"
           name="location"
-          value={props.allInfo.location}
-          onChange={props.allInfo.onChangeEducationInfo}
+          value={location}
+          onChange={props.onChangeEducationInfo}
           type="text"
           placeholder="Enter location"
         />
       </div>
 
-      <div className="mb-4 flex">
+      <div className="mb-4 flex justify-between">
+        <button
+          type="button"
+          className="rounded-md border-2 border-gray-500 px-3 py-1 text-gray-600"
+        >
+          Delete
+        </button>
         <div className="flex gap-2">
           <button
-            onClick={props.allInfo.addEdu}
             type="button"
             className="rounded-md border-2 border-gray-500 px-3 py-1 text-gray-600"
           >

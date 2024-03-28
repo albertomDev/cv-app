@@ -7,8 +7,8 @@ export default function SubmitEduInfo(props) {
   const [displayEdu, setDisplayEdu] = useState(false);
 
   let rotateArrow = displayEdu
-    ? 'mr-6 w-5 rotate-0 transform pt-6 duration-200 ease-in-out'
-    : 'mr-6 w-5 rotate-180 transform pb-6 duration-200 ease-in-out';
+    ? 'mr-6 w-5 rotate-0 transform pt-6 duration-300 ease-in-out'
+    : 'mr-6 w-5 rotate-180 transform pb-6 duration-300 ease-in-out';
 
   return (
     <>
@@ -31,8 +31,13 @@ export default function SubmitEduInfo(props) {
             <EduForm allInfo={props} />
           ) : (
             <SubmittedEduInfo
+              educationInfoState={props.educationInfoState}
               educationInfoArr={props.educationInfoArr}
               addEdu={props.addEdu}
+              onChangeEducationInfo={props.onChangeEducationInfo}
+              onClickEditEducation={props.onClickEditEducation}
+              editEducation={props.editEducation}
+              onSubmitEditedForm={props.onSubmitEditedForm}
             />
           )}
         </div>

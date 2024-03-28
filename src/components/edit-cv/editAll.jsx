@@ -15,6 +15,9 @@ export default function EditAll(props) {
         showSubmittedEdu={props.showSubmittedEdu}
         educationInfoArr={props.educationInfoArr}
         addEdu={props.addEdu}
+        onClickEditEducation={props.onClickEditEducation}
+        editEducation={props.editEducation}
+        onSubmitEditedForm={props.onSubmitEditedForm}
       />
     </div>
   );
