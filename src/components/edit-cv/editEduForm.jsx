@@ -3,7 +3,7 @@ export default function EditEduForm(props) {
   return (
     <form
       onSubmit={props.onSubmitEditedForm}
-      className="rounded-b-lg bg-white px-6 py-4"
+      className="mb-4 rounded-b-lg bg-white px-6 py-4"
     >
       <div className="mb-4">
         <label

@@ -5,7 +5,7 @@ export default function SubmittedEduInfo(props) {
   return (
     <>
       {props.editEducation ? (
-        <div className="mt-1 grid gap-1">
+        <div className="mb-4 mt-1 grid gap-1">
           {props.educationInfoArr.map(eachEdu => {
             return (
               <button

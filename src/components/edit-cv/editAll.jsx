@@ -1,7 +1,9 @@
 import EditContactInfo from './editContactInfo';
 import SubmitEduInfo from './submitEduInfo';
+import Work from './work';
 
 export default function EditAll(props) {
+  // console.log(props)
   return (
     <div className="w-[505px]">
       <EditContactInfo
@@ -18,6 +20,13 @@ export default function EditAll(props) {
         onClickEditEducation={props.onClickEditEducation}
         editEducation={props.editEducation}
         onSubmitEditedForm={props.onSubmitEditedForm}
+      />
+      <Work
+        workState={props.workState}
+        setWorkState={props.setWorkState}
+        workArray={props.workArray}
+        setWorkArray={props.setWorkArray}
+        createWorkId={props.createWorkId}
       />
     </div>
   );

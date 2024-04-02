@@ -3,6 +3,7 @@ import ViewAll from './components/view-cv/viewAll';
 import EditAll from './components/edit-cv/editAll';
 import { useState } from 'react';
 
+
 function App() {
   function uid() {
     return (
@@ -28,10 +29,20 @@ function App() {
   });
 
   const [educationInfoArr, setEducationInfoArr] = useState([]);
-
   const [showSubmittedEdu, setShowSubmittedEdu] = useState(true);
-
   const [editEducation, setEditEducation] = useState(true);
+
+  const [workState, setWorkState] = useState({
+    id: uid(),
+    company: '',
+    title: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    description: '',
+  });
+
+  const [workArray, setWorkArray] = useState([]);
 
   function resetEducationInfoState() {
     setEducationInfo(prevInfo => {
@@ -83,7 +94,7 @@ function App() {
 
   function handleEducationEditForm(event) {
     event.preventDefault();
-    console.log(educationInfo);
+    // console.log(educationInfo);
 
     const editedArray = educationInfoArr.map(each => {
       if (each.id == educationInfo.id) {
@@ -91,7 +102,7 @@ function App() {
       }
       return each;
     });
-    console.log(editedArray);
+    // console.log(editedArray);
     setEducationInfoArr(editedArray);
     setEditEducation(!editEducation);
     resetEducationInfoState();
@@ -111,8 +122,17 @@ function App() {
         onClickEditEducation={handleEducationEditButton}
         editEducation={editEducation}
         onSubmitEditedForm={handleEducationEditForm}
+        workState={workState}
+        setWorkState={setWorkState}
+        workArray={workArray}
+        setWorkArray={setWorkArray}
+        createWorkId={uid}
       />
-      <ViewAll contactInfo={contactInfo} educationInfoArr={educationInfoArr} />
+      <ViewAll
+        contactInfo={contactInfo}
+        educationInfoArr={educationInfoArr}
+        workArray={workArray}
+      />
     </div>
   );
 }

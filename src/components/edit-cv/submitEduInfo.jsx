@@ -12,7 +12,7 @@ export default function SubmitEduInfo(props) {
 
   return (
     <>
-      <div className={`${displayEdu ? 'rounded-t-lg' : 'rounded-lg'} bg-white`}>
+      <div className={`${displayEdu ? 'rounded-t-lg' : 'mb-4 after:rounded-lg'} bg-white`}>
         <button
           onClick={() => setDisplayEdu(!displayEdu)}
           className="flex w-full cursor-pointer justify-between font-bold text-gray-900"

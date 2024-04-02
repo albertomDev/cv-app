@@ -1,7 +1,7 @@
 export default function EduForm(props) {
   return (
     <form
-      className="rounded-b-lg bg-white px-6 py-4"
+      className="mb-4 rounded-b-lg bg-white px-6 py-4"
       onSubmit={props.allInfo.onSubmitEducationInfo}
     >
       <div className="mb-4">
