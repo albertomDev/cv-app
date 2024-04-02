@@ -1,6 +1,6 @@
 import EditContactInfo from './editContactInfo';
-import SubmitEduInfo from './submitEduInfo';
 import Work from './work';
+import Education from './education';
 
 export default function EditAll(props) {
   // console.log(props)
@@ -10,16 +10,12 @@ export default function EditAll(props) {
         contactInfo={props.contactInfo}
         onChangeContactInfo={props.onChangeContactInfo}
       />
-      <SubmitEduInfo
-        educationInfoState={props.educationInfoState}
-        onSubmitEducationInfo={props.onSubmitEducationInfo}
-        onChangeEducationInfo={props.onChangeEducationInfo}
-        showSubmittedEdu={props.showSubmittedEdu}
-        educationInfoArr={props.educationInfoArr}
-        addEdu={props.addEdu}
-        onClickEditEducation={props.onClickEditEducation}
-        editEducation={props.editEducation}
-        onSubmitEditedForm={props.onSubmitEditedForm}
+      <Education
+        educationState={props.educationState}
+        setEducationState={props.setEducationState}
+        educationArray={props.educationArray}
+        setEducationArray={props.setEducationArray}
+        createWorkId={props.createWorkId}
       />
       <Work
         workState={props.workState}

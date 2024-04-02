@@ -1,5 +1,6 @@
 export default function ViewEducation(props) {
-  if (props.educationInfoArr.length > 0) {
+  console.log(props);
+  if (props.educationArray.length > 0) {
     return (
       <>
         <div className="my-10 px-14">
@@ -8,7 +9,7 @@ export default function ViewEducation(props) {
           </h2>
         </div>
 
-        {props.educationInfoArr.map(eachEdu => {
+        {props.educationArray.map(eachEdu => {
           return (
             <div className="mb-4 flex gap-5 px-14" key={eachEdu.id}>
               <div className="w-36">

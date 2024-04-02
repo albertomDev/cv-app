@@ -3,7 +3,6 @@ import ViewAll from './components/view-cv/viewAll';
 import EditAll from './components/edit-cv/editAll';
 import { useState } from 'react';
 
-
 function App() {
   function uid() {
     return (
@@ -19,7 +18,7 @@ function App() {
     address: '',
   });
 
-  const [educationInfo, setEducationInfo] = useState({
+  const [educationState, setEducationState] = useState({
     id: uid(),
     school: '',
     degree: '',
@@ -28,9 +27,7 @@ function App() {
     location: '',
   });
 
-  const [educationInfoArr, setEducationInfoArr] = useState([]);
-  const [showSubmittedEdu, setShowSubmittedEdu] = useState(true);
-  const [editEducation, setEditEducation] = useState(true);
+  const [educationArray, setEducationArray] = useState([]);
 
   const [workState, setWorkState] = useState({
     id: uid(),
@@ -44,20 +41,6 @@ function App() {
 
   const [workArray, setWorkArray] = useState([]);
 
-  function resetEducationInfoState() {
-    setEducationInfo(prevInfo => {
-      return {
-        ...prevInfo,
-        id: uid(),
-        school: '',
-        degree: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-      };
-    });
-  }
-
   function handleContactInfoChange(event) {
     const { name, value } = event.target;
     setContactInfo(prevInfo => {
@@ -65,63 +48,15 @@ function App() {
     });
   }
 
-  function handleEducationInfoChange(event) {
-    const { name, value } = event.target;
-    setEducationInfo(prevInfo => {
-      return { ...prevInfo, [name]: value };
-    });
-  }
-
-  function addEduButton() {
-    setShowSubmittedEdu(!showSubmittedEdu);
-    resetEducationInfoState();
-  }
-
-  function handleEducationInfoForm(event) {
-    event.preventDefault();
-
-    setEducationInfoArr(prevInfo => [...prevInfo, educationInfo]);
-    addEduButton();
-  }
-
-  function handleEducationEditButton(event) {
-    const newEdit = educationInfoArr.filter(
-      eachEdu => eachEdu.id === event.currentTarget.dataset.id,
-    );
-    setEducationInfo(newEdit[0]);
-    setEditEducation(!educationInfo);
-  }
-
-  function handleEducationEditForm(event) {
-    event.preventDefault();
-    // console.log(educationInfo);
-
-    const editedArray = educationInfoArr.map(each => {
-      if (each.id == educationInfo.id) {
-        return { ...each, ...educationInfo };
-      }
-      return each;
-    });
-    // console.log(editedArray);
-    setEducationInfoArr(editedArray);
-    setEditEducation(!editEducation);
-    resetEducationInfoState();
-  }
-
   return (
     <div className="flex justify-center gap-8 bg-gray-100 px-8 pt-8">
       <EditAll
         contactInfo={contactInfo}
         onChangeContactInfo={handleContactInfoChange}
-        educationInfoArr={educationInfoArr}
-        educationInfoState={educationInfo}
-        onChangeEducationInfo={handleEducationInfoChange}
-        onSubmitEducationInfo={handleEducationInfoForm}
-        showSubmittedEdu={showSubmittedEdu}
-        addEdu={addEduButton}
-        onClickEditEducation={handleEducationEditButton}
-        editEducation={editEducation}
-        onSubmitEditedForm={handleEducationEditForm}
+        educationState={educationState}
+        setEducationState={setEducationState}
+        educationArray={educationArray}
+        setEducationArray={setEducationArray}
         workState={workState}
         setWorkState={setWorkState}
         workArray={workArray}
@@ -130,7 +65,7 @@ function App() {
       />
       <ViewAll
         contactInfo={contactInfo}
-        educationInfoArr={educationInfoArr}
+        educationArray={educationArray}
         workArray={workArray}
       />
     </div>

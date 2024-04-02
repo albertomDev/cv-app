@@ -1,86 +1,85 @@
-export default function WorkForm(props) {
+export default function EducationForm(props) {
   // console.log(props);
 
-  function handleWorkStateChange(event) {
+  function handleEducationChange(event) {
     const { name, value } = event.target;
-    props.setWorkState(prevInfo => {
+    props.setEducationState(prevInfo => {
       return { ...prevInfo, [name]: value };
     });
   }
 
-  function resetWorkState() {
-    props.setWorkState(prevInfo => {
+  function resetEducationState() {
+    props.setEducationState(prevInfo => {
       return {
         ...prevInfo,
         id: props.createWorkId(),
-        company: '',
-        title: '',
+        school: '',
+        degree: '',
         startDate: '',
         endDate: '',
         location: '',
-        description: '',
       };
     });
   }
 
-  function editWorkArray() {
-    const editedArray = props.workArray.map(work => {
-      if (work.id == props.workState.id) {
-        return { ...work, ...props.workState };
+  function editEducationArray() {
+    const editedArray = props.educationArray.map(education => {
+      if (education.id == props.educationState.id) {
+        return { ...education, ...props.educationState };
       }
-      return work;
+      return education;
     });
-    props.setWorkArray(editedArray);
+    props.setEducationArray(editedArray);
   }
 
   function showDeleteButton() {
-    props.setShowEditWork(!props.editWork);
-    resetWorkState();
+    props.setShowEducationEdit(!props.showEducationEdit);
+    resetEducationState();
   }
 
-  function deleteWork() {
-    const deleted = props.workArray.filter(work => {
-      return work.id !== props.workState.id;
+  function deleteEducation() {
+    const deleted = props.educationArray.filter(education => {
+      return education.id !== props.educationState.id;
     });
-    props.setWorkArray(deleted);
+    props.setEducationArray(deleted);
     showDeleteButton();
   }
 
-  function handleWorkForm(event) {
+  function handleEducationForm(event) {
     event.preventDefault();
     console.log(event);
-    const checkId = props.workArray.find(
-      work => work.id === props.workState.id,
+    const checkId = props.educationArray.find(
+      education => education.id === props.educationState.id,
     );
     if (checkId) {
-      editWorkArray();
+      editEducationArray();
     } else {
-      props.setWorkArray(prevInfo => [...prevInfo, props.workState]);
+      props.setEducationArray(prevInfo => [...prevInfo, props.educationState]);
     }
-    props.setShowEditWork(!props.editWork);
-    resetWorkState();
+    props.setShowEducationEdit(!props.showEducationEdit);
+    resetEducationState();
   }
 
   return (
     <form
       className="mb-4 rounded-b-lg bg-white px-6 py-4"
-      onSubmit={handleWorkForm}
+      onSubmit={handleEducationForm}
     >
       <div className="mb-4">
         <label
           className="mb-2 block text-sm font-bold text-gray-900"
           htmlFor="school"
         >
-          Company
+          School
         </label>
         <input
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
-          id="company"
-          name="company"
-          onChange={handleWorkStateChange}
+          id="school"
+          name="school"
+          onChange={handleEducationChange}
           type="text"
           placeholder="Enter computer name"
-          value={props.workState.company}
+          value={props.educationState.school}
           required
         />
       </div>
@@ -90,16 +89,16 @@ export default function WorkForm(props) {
           className="mb-2 block text-sm font-bold text-gray-900"
           htmlFor="school"
         >
-          Position title
+          Degree
         </label>
         <input
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
-          id="title"
-          name="title"
-          onChange={handleWorkStateChange}
+          id="degree"
+          name="degree"
+          onChange={handleEducationChange}
           type="text"
           placeholder="Enter position title"
-          value={props.workState.title}
+          value={props.educationState.degree}
           required
         />
       </div>
@@ -116,8 +115,8 @@ export default function WorkForm(props) {
             className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
             id="startDate"
             name="startDate"
-            value={props.workState.startDate}
-            onChange={handleWorkStateChange}
+            value={props.educationState.startDate}
+            onChange={handleEducationChange}
             type="text"
             placeholder="Enter start date"
           />
@@ -134,10 +133,10 @@ export default function WorkForm(props) {
             className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
             id="endDate"
             name="endDate"
-            onChange={handleWorkStateChange}
+            onChange={handleEducationChange}
             type="text"
             placeholder="Enter end date"
-            value={props.workState.endDate}
+            value={props.educationState.endDate}
           />
         </div>
       </div>
@@ -153,29 +152,10 @@ export default function WorkForm(props) {
           className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
           id="location"
           name="location"
-          onChange={handleWorkStateChange}
+          onChange={handleEducationChange}
           type="text"
           placeholder="Enter location"
-          value={props.workState.location}
-          required
-        />
-      </div>
-
-      <div className="mb-4">
-        <label
-          className="mb-2 block text-sm font-bold text-gray-900"
-          htmlFor="school"
-        >
-          Description
-        </label>
-        <textarea
-          className="w-full rounded-xl bg-gray-100 px-3 py-2 leading-tight text-gray-900 outline-none"
-          id="description"
-          name="description"
-          onChange={handleWorkStateChange}
-          type="text"
-          placeholder="Enter position title"
-          value={props.workState.description}
+          value={props.educationState.location}
           required
         />
       </div>
@@ -184,7 +164,7 @@ export default function WorkForm(props) {
         {props.showDelButton ? (
           <div className="flex justify-between">
             <button
-              onClick={deleteWork}
+              onClick={deleteEducation}
               type="button"
               className="rounded-md border-2 border-gray-500 px-3 py-1 text-gray-600"
             >

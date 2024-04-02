@@ -7,7 +7,7 @@ export default function Work(props) {
   // console.log(props)
   const [clickArrow, setClickArrow] = useState(false);
   const [showEditWork, setShowEditWork] = useState(false);
-  const [showDelButton, setShowDelButton] = useState(false)
+  const [showDelButton, setShowDelButton] = useState(false);
 
   let rotateArrow = clickArrow
     ? 'mr-6 w-5 rotate-0 transform pt-6 duration-300 ease-in-out'
@@ -40,7 +40,6 @@ export default function Work(props) {
               setShowEditWork={setShowEditWork}
               showDelButton={showDelButton}
               setShowDelButton={setShowDelButton}
-             
             />
           ) : (
             <EditWork
