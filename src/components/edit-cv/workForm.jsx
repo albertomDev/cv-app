@@ -1,6 +1,4 @@
 export default function WorkForm(props) {
-  // console.log(props);
-
   function handleWorkStateChange(event) {
     const { name, value } = event.target;
     props.setWorkState(prevInfo => {
@@ -48,7 +46,7 @@ export default function WorkForm(props) {
 
   function handleWorkForm(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     const checkId = props.workArray.find(
       work => work.id === props.workState.id,
     );
@@ -174,7 +172,7 @@ export default function WorkForm(props) {
           name="description"
           onChange={handleWorkStateChange}
           type="text"
-          placeholder="Enter position title"
+          placeholder="Enter job description"
           value={props.workState.description}
           required
         />

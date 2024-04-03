@@ -1,8 +1,29 @@
-# React + Vite
+# CV Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live demo: **
 
-Currently, two official plugins are available:
+<img src='/public/cv-showcase.png' width='100%'>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies used 
+- React
+- Tailwind CSS
+
+## Deployment 
+Here are the steps to start the project locally.
+
+1. Clone the repository.
+```
+HTTPS - $ git clone https://github.com/albertomDev/cv-app.git
+or 
+SSH - $ git clone git@github.com:albertomDev/cv-app.git
+```
+2. Move to the cloned directory.
+```
+$ cd cv-app
+```
+3. Install dependencies
+```
+$ npm i
+or
+$ yarn
+```

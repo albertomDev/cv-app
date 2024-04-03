@@ -47,7 +47,7 @@ export default function EducationForm(props) {
 
   function handleEducationForm(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     const checkId = props.educationArray.find(
       education => education.id === props.educationState.id,
     );

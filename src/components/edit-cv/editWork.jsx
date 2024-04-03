@@ -1,7 +1,6 @@
 import { PencilSquareIcon } from '@heroicons/react/24/solid';
 
 export default function EditWork(props) {
-  console.log(props);
   function handleEditClick(event) {
     const newEdit = props.workArray.filter(
       company => company.id === event.currentTarget.dataset.id,
@@ -12,7 +11,6 @@ export default function EditWork(props) {
   }
 
   function handleAddButton() {
-    console.log('add button');
     props.setShowEditWork(!props.showEditWork);
     props.setShowDelButton(false);
   }

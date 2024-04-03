@@ -11,12 +11,7 @@ function App() {
     );
   }
 
-  const [contactInfo, setContactInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-  });
+  const [contactInfo, setContactInfo] = useState({});
 
   const [educationState, setEducationState] = useState({
     id: uid(),

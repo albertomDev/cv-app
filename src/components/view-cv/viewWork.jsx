@@ -19,6 +19,7 @@ export default function ViewWork(props) {
               </div>
               <div className="w-full">
                 <p className="font-semibold">{work.company}</p>
+				<p className="pb-2">{work.title}</p>
                 <p>{work.description}</p>
               </div>
             </div>

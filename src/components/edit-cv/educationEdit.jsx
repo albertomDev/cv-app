@@ -1,7 +1,7 @@
 import { PencilSquareIcon } from '@heroicons/react/24/solid';
 
 export default function EducationEdit(props) {
-  console.log(props);
+  // console.log(props);
   function handleEditClick(event) {
     const newEdit = props.educationArray.filter(
       education => education.id === event.currentTarget.dataset.id,

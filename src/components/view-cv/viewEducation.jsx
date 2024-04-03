@@ -1,5 +1,4 @@
 export default function ViewEducation(props) {
-  console.log(props);
   if (props.educationArray.length > 0) {
     return (
       <>
