@@ -1,6 +1,6 @@
 # CV Builder
 
-**Live demo: **
+**Live demo:** https://cv-builder-albertom-dev.netlify.app/
 
 <img src='/public/cv-showcase.png' width='100%'>
 
